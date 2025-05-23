@@ -57,28 +57,25 @@ body {
     border: none;
     padding: 8px;
     border-radius: 8px;
-
 }
 
-.add-modal-content{
+.modal-content{
     background-color: white;
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-
+    box-shadow: 0 10px 25px rbga(0, 0, 0, 0.1);
 }
 
-.add-modal-header{
+.modal-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     border-bottom: 1px solid #e2e8f0;
-    
 }
 
-.add-form-group{
+.form-group{
     margin-bottom: 20px;
 }
 
@@ -111,4 +108,9 @@ body {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
+}
+
+.modal.open{
+    opacity: 1;
+    visibility: visible;
 }
