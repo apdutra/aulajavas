@@ -1,35 +1,34 @@
-
-function chamaOiMundo(){
-    console.log("Oi mundo!")
+function chamarOiMundo(){
+    console.log("Oi mundo!")    
 }
 
 const modal = document.getElementById("modal")
 const formulario = document.getElementById("study-form")
 
-let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-
-//inputs
+// inputs
 const materiaInput = document.getElementById("materia")
 const dataInput = document.getElementById("data")
 const corInput = document.getElementById("cor")
 
-// console.log(modal)
+let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+console.log(tarefas)
 
-function abrirModal(){
-    modal.classList.add('open')
+
+function abrirModal() {
+    modal.classList.add('open');
 }
 
-function fecharModal(){
-    modal.classList.remove('open')
+function fecharModal() {
+    modal.classList.remove('open');
 }
 
-function salvar(){
+function salvar() {
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
 }
 
-//arrow function
+// arrow function
 formulario.addEventListener('submit', (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const novaTarefa = {
         materia: materiaInput.value,
@@ -39,6 +38,37 @@ formulario.addEventListener('submit', (e) => {
 
     tarefas.push(novaTarefa);
     salvar()
-    console.log(tarefas)
+    
+
 
 })
+console.log(tarefas)
+
+const taskContainer = document.getElementById('task-container');
+
+taskContainer.innerHTML = '';
+
+tarefas.forEach(tarefa => {
+    const template = document.getElementById('task-template');
+    const clone = template.content.cloneNode(true);
+    const card = clone.querySelector('.task-card');
+    const colorIndicator = clone.querySelector('.task-color-indicator');
+    colorIndicator.style.backgroundColor = tarefa.cor
+    clone.querySelector('.task-materia').textContent = tarefa.materia;
+
+    const [ano, mes, dia] = tarefa.data.split('-');
+
+    const data = new Date(ano, mes - 1, dia);
+
+    clone.querySelector('.task-data').textContent = 
+    data.toLocaleDateString('pt-BR', {
+        weekday: "long",
+        day: "2-digit",
+        month: "long"
+    })
+
+    console.log(data)
+    taskContainer.appendChild(clone)
+    
+});
+

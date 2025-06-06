@@ -19,6 +19,11 @@
       </header>
     </div>
 
+    <section id="tasks-section" class="tasks-section">
+      <h2>Atividades</h2>
+      <div id="task-container" class="task-container"></div>
+    </section>
+
     <div id="modal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -45,6 +50,16 @@
         </form>
       </div>
     </div>
+
+    <template id="task-template">
+    <div class="task-card">
+      <div class="task-color-indicator"></div>
+      <div class="task-info">
+        <div class="task-materia"></div>
+        <div class="task-data"></div>
+      </div>
+    </div>
+    </template>
 
     <script src="./script.js"></script>
   </body>
